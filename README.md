@@ -12,6 +12,12 @@ API Gateway를 통해 클라이언트 요청을 인증하고 각 마이크로서
 - 포인트 서비스는 내부 호출만 사용하여 별도 라우팅은 없음
 - JwtAuthenticationFilter를 통한 JWT 토큰 검증 및 사용자 인증 기능 구현
 
+## ✅ Services
+- [api-gateway-service](https://github.com/k724k/api-gateway-service)
+- [user-service](https://github.com/k724k/user-service)
+- [board-service](https://github.com/k724k/board-service)
+- [point-service](https://github.com/k724k/point-serivce)
+
 ## ✅ Tech Stack
 <div align="left">
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />&nbsp
