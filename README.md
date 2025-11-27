@@ -1,5 +1,7 @@
 # 🏷️ api-gateway-service
 
+[translate:API Gateway를 통해 클라이언트 요청을 인증하고 각 마이크로서비스로 라우팅하는 서비스입니다.]
+
 ## ✅ Overview
 - Apache Kafka를 이용한 이벤트 발행 및 소비(컨슈머) 패턴 적용
 - user-service, point-service와 Kafka 토픽을 통해 비동기 이벤트 방식으로 연동
