@@ -1,6 +1,6 @@
 server:
   port: 8000
-
+  
 spring:
   cloud:
     gateway:
@@ -11,21 +11,39 @@ spring:
               uri: http://localhost:8080
               predicates:
                 - Path=/api/users/**
-            - id: board-service-jwt
-              uri: http://localhost:8081
-              predicates:
-                - Path=/api/boards
-                - Method=POST
               filters:
-                - JwtAuthenticationFilter
+                - RewritePath=/api/users/(?<segment>.*), /api/users/${segment}
+
+            - id: user-service-docs
+              uri: http://localhost:8080
+              predicates:
+                - Path=/user-service/v3/api-docs
+              filters:
+                - RewritePath=/user-service/v3/api-docs, /v3/api-docs
+
             - id: board-service
               uri: http://localhost:8081
               predicates:
                 - Path=/api/boards/**
-#            - id: point-service
-#              uri: http://localhost:8082
-#              predicates:
-#                - Path=/points/**
+              filters:
+                - RewritePath=/api/boards/(?<segment>.*), /api/boards/${segment}
+
+            - id: board-service-docs
+              uri: http://localhost:8081
+              predicates:
+                - Path=/board-service/v3/api-docs
+              filters:
+                - RewritePath=/board-service/v3/api-docs, /v3/api-docs
 
 jwt:
   secret: jscode-secret-1234-1234-1234-1234
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    urls:
+      - name: user-service
+        url: /user-service/v3/api-docs
+      - name: board-service
+        url: /board-service/v3/api-docs
